@@ -84,7 +84,6 @@ export class Game extends Phaser.Scene {
 
     // this.pointer_showXY(this.mouse_showXY);
     this.jugador.update();
-    this.fondoscroll.update();
     this.tuberias.update();
     // this.moviles.update();
 
