@@ -60,7 +60,7 @@ export class Game extends Phaser.Scene {
     this.jugador.create(this.scene.key);
     this.fondoscroll.create();
     this.tuberias.create();
-    // this.moviles.create(this.tuberias.get().getChildren()[Tuberias.NRO_TUBERIAS * 2 - 1].x);
+    this.moviles.create();
 
     this.marcadorPtos.create();
     this.marcadorHi.create();
@@ -85,7 +85,7 @@ export class Game extends Phaser.Scene {
     // this.pointer_showXY(this.mouse_showXY);
     this.jugador.update();
     this.tuberias.update();
-    // this.moviles.update();
+    this.moviles.update();
 
     if (this.txt.get() && !this.jugador.get().getData('game-over')) this.txt.get().setX(this.jugador.get().x + 50);
   }
