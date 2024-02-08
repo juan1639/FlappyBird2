@@ -4,7 +4,7 @@
 // -----------------------------------------------------------------------------------------
 import { FondoScroll } from '../components/fondoscroll.js';
 import { Jugador } from '../components/jugador.js';
-import { Tuberias, TuberiasMoviles } from '../components/tuberias.js';
+import { Tuberias } from '../components/tuberias.js';
 import { Marcador } from '../components/marcador.js';
 import { Textos } from '../components/textos.js';
 import { BotonNuevaPartida, BotonFullScreen } from '../components/boton-nuevapartida.js';
@@ -23,7 +23,6 @@ export class Game extends Phaser.Scene {
     this.fondoscroll = new FondoScroll(this);
     this.jugador = new Jugador(this);
     this.tuberias = new Tuberias(this);
-    this.moviles = new TuberiasMoviles(this);
 
     const ancho = this.sys.game.config.width;
     const alto = this.sys.game.config.height;
@@ -60,7 +59,6 @@ export class Game extends Phaser.Scene {
     this.jugador.create(this.scene.key);
     this.fondoscroll.create();
     this.tuberias.create();
-    this.moviles.create();
 
     this.marcadorPtos.create();
     this.marcadorHi.create();
@@ -85,7 +83,6 @@ export class Game extends Phaser.Scene {
     // this.pointer_showXY(this.mouse_showXY);
     this.jugador.update();
     this.tuberias.update();
-    this.moviles.update();
 
     if (this.txt.get() && !this.jugador.get().getData('game-over')) this.txt.get().setX(this.jugador.get().x + 50);
   }
@@ -170,17 +167,6 @@ export class Game extends Phaser.Scene {
       if (jugador.getData('game-over')) return false;
       return true;
     });
-
-    // ----------------------------------------------------------
-    this.physics.add.collider(this.jugador.get(), this.moviles.get(), (jugador, moviles) => {
-
-      colisionYgameover(jugador, this);
-
-    }, (jugador, moviles) => {
-
-      if (jugador.getData('game-over')) return false;
-      return true;
-    }, this);
   }
 
   // ================================================================
